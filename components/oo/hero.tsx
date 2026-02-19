@@ -51,8 +51,17 @@ export function Hero() {
           enduring, gritty, resilient wellbeing in mind, body, and soul.
         </p>
 
+        {/* Scroll Indicator */}
+        <a
+          href="#philosophy"
+          className="mt-10 animate-bounce"
+          aria-label="Scroll down"
+        >
+          <ChevronDown className="h-6 w-6 text-muted-foreground" />
+        </a>
+
         {/* CTA Buttons */}
-        <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
           <a
             href="/playbook"
             className="bg-accent px-10 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
@@ -67,15 +76,6 @@ export function Hero() {
           </a>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <a
-        href="#philosophy"
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 animate-bounce"
-        aria-label="Scroll down"
-      >
-        <ChevronDown className="h-6 w-6 text-muted-foreground" />
-      </a>
     </section>
   )
 }
