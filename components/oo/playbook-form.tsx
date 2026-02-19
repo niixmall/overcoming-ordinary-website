@@ -5,13 +5,20 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Download, Loader2, CheckCircle2 } from "lucide-react"
+import { PLAYBOOKS } from "@/lib/playbooks"
 
 const WEBHOOK_URL =
   "https://script.google.com/macros/s/AKfycbzZSp1x7IpyFxmO1ZuymohbE4cWz8_IhmBAzns_uywvB0zOPnbl8bZRAveX1kY9jWpOlQ/exec"
 
-export function PlaybookForm() {
+interface PlaybookFormProps {
+  playbookSlug?: string
+}
+
+export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormProps) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const playbook = PLAYBOOKS.find((p) => p.slug === playbookSlug) ?? PLAYBOOKS[0]
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -25,6 +32,7 @@ export function PlaybookForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           formType: "playbook",
+          playbook: playbookSlug,
           firstName: formData.get("firstName"),
           lastName: formData.get("lastName"),
           email: formData.get("email"),
@@ -50,11 +58,11 @@ export function PlaybookForm() {
           {"YOU'RE ON THE TEAM"}
         </h3>
         <p className="mx-auto mb-8 max-w-md text-base leading-relaxed text-muted-foreground">
-          Welcome aboard. Your personalized Focus Playbook is unlocked and
+          Welcome aboard. Your playbook is unlocked and
           ready to go. Training starts now.
         </p>
         <a
-          href="https://docs.google.com/document/d/17dE0ItJ1AjEAQtRMzetFDjfxSWsckbWFSoh70uH09kw/edit?usp=sharing"
+          href={playbook.downloadUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-accent px-10 py-4 text-sm font-bold uppercase tracking-widest text-accent-foreground transition-colors hover:bg-accent/90"
@@ -75,8 +83,7 @@ export function PlaybookForm() {
         GET YOUR FREE PLAYBOOK
       </h3>
       <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
-        Enter your info below and get instant access to the Focus Playbook.
-        Training starts today.
+        Enter your info below and get instant access. Training starts today.
       </p>
 
       <div className="grid gap-5 sm:grid-cols-2">
