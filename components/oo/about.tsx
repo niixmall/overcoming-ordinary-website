@@ -39,8 +39,8 @@ export function About() {
               />
             </div>
             {/* Accent corner */}
-            <div className="absolute -bottom-4 -right-4 h-32 w-32 border-b-2 border-r-2 border-accent" />
-            <div className="absolute -top-4 -left-4 h-32 w-32 border-t-2 border-l-2 border-accent/30" />
+            <div className="absolute -bottom-4 -right-4 h-32 w-32 border-b-2 border-r-2 border-accent" aria-hidden="true" />
+            <div className="absolute -top-4 -left-4 h-32 w-32 border-t-2 border-l-2 border-accent/30" aria-hidden="true" />
 
             {/* Gallery strip */}
             <div className="mt-6 grid grid-cols-3 gap-3">
@@ -72,7 +72,7 @@ export function About() {
             <p className="mb-6 text-sm uppercase tracking-wider text-muted-foreground">
               Director of Sport Performance Psychology, USAFA
             </p>
-            <div className="mb-8 h-px w-16 bg-accent" />
+            <div className="mb-8 h-px w-16 bg-accent" aria-hidden="true" />
 
             <p className="mb-6 text-base leading-relaxed text-muted-foreground">
               Dr. Dillon Small is a licensed clinical psychologist and the

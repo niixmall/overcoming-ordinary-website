@@ -197,6 +197,7 @@ export function ContactForm() {
                 id="lastName"
                 name="lastName"
                 required
+                aria-required="true"
                 placeholder="Doe"
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
@@ -210,6 +211,7 @@ export function ContactForm() {
                 name="email"
                 type="email"
                 required
+                aria-required="true"
                 placeholder="john@example.com"
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
@@ -233,6 +235,7 @@ export function ContactForm() {
                 id="message"
                 name="message"
                 required
+                aria-required="true"
                 rows={5}
                 placeholder="Describe your event, team size, goals, timeline, or any other details that would help Dr. Dillon understand how he can serve you best."
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
@@ -275,6 +278,13 @@ export function ContactForm() {
               </>
             )}
           </Button>
+          <p className="mt-3 text-xs text-muted-foreground">
+            By submitting, you agree to our{" "}
+            <a href="/privacy" className="underline hover:text-foreground">
+              Privacy Policy
+            </a>
+            .
+          </p>
         </div>
       )}
     </form>

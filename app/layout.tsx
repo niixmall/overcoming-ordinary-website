@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: '%s | Overcoming Ordinary',
   },
   description:
-    'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, academics, and parenting.',
+    'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, aviation, and military.',
   metadataBase: new URL('https://overcomingordinary.com'),
   alternates: {
     canonical: '/',
@@ -36,6 +36,8 @@ export const metadata: Metadata = {
     'keynote speaker',
     'athletics psychology',
     'business performance',
+    'aviation psychology',
+    'military mental performance',
     'overcoming ordinary',
   ],
   authors: [{ name: 'Dr. Dillon Small' }],
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
     siteName: 'Overcoming Ordinary',
     title: 'Overcoming Ordinary | Dominate Average',
     description:
-      'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, academics, and parenting.',
+      'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, aviation, and military.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -78,7 +80,7 @@ const jsonLd = {
         url: "https://overcomingordinary.com/images/oo-logo.png",
       },
       description:
-        "Performance psychology coaching and training by Dr. Dillon Small. Helping high performers dominate average in athletics, business, academics, and parenting.",
+        "Performance psychology coaching and training by Dr. Dillon Small. Helping high performers dominate average in athletics, business, aviation, and military.",
       email: "Business@overcomingordinary.com",
       founder: {
         "@type": "Person",

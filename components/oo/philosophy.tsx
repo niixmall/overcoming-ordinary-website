@@ -34,7 +34,7 @@ export function Philosophy() {
             NO MAGIC BULLET.
             <span className="block text-muted-foreground">JUST THE WORK.</span>
           </h2>
-          <div className="mt-6 h-px w-16 bg-accent" />
+          <div className="mt-6 h-px w-16 bg-accent" aria-hidden="true" />
           <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
             There is no single path for lifelong change. The O/o philosophy is
             built on the integration of mind, body, and soul -- a framework

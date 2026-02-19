@@ -104,7 +104,11 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
       </p>
 
       {error && (
-        <div className="mb-6 border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="mb-6 border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+        >
           {error}
         </div>
       )}
@@ -121,6 +125,7 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
             id="pb-firstName"
             name="firstName"
             required
+            aria-required="true"
             placeholder="John"
             className="border-border bg-background text-foreground placeholder:text-muted-foreground/50"
           />
@@ -136,6 +141,7 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
             id="pb-lastName"
             name="lastName"
             required
+            aria-required="true"
             placeholder="Doe"
             className="border-border bg-background text-foreground placeholder:text-muted-foreground/50"
           />
@@ -152,6 +158,7 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
             name="email"
             type="email"
             required
+            aria-required="true"
             placeholder="john@example.com"
             className="border-border bg-background text-foreground placeholder:text-muted-foreground/50"
           />
@@ -207,6 +214,13 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
           </>
         )}
       </Button>
+      <p className="mt-3 text-xs text-muted-foreground">
+        By submitting, you agree to our{" "}
+        <a href="/privacy" className="underline hover:text-foreground">
+          Privacy Policy
+        </a>
+        .
+      </p>
     </form>
   )
 }
