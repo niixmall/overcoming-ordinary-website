@@ -35,7 +35,7 @@ export function PartnersGrid() {
                   src={partner.logo}
                   alt={`${partner.name} logo`}
                   fill
-                  className="object-contain brightness-0 invert opacity-60"
+                  className="object-contain opacity-70"
                   sizes="56px"
                   loading="lazy"
                 />

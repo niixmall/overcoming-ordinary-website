@@ -24,7 +24,7 @@ function PartnerItem({ partner }: { partner: (typeof partners)[number] }) {
           src={partner.logo}
           alt={`${partner.name} logo`}
           fill
-          className="object-contain brightness-0 invert"
+          className="object-contain"
           sizes="48px"
           loading="lazy"
         />
