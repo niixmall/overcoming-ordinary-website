@@ -16,8 +16,8 @@ const gallery = [
     alt: "Dr. Dillon Small official U.S. Air Force portrait",
   },
   {
-    src: "/images/dillon-stage-front.jpg",
-    alt: "Dr. Dillon Small posing on stage in front of a packed auditorium",
+    src: "/images/dillon-stage-side.jpg",
+    alt: "Dr. Dillon Small speaking on stage to a packed audience",
   },
 ]
 
@@ -30,10 +30,11 @@ export function About() {
           <div className="relative">
             <div className="relative aspect-[16/9] overflow-hidden">
               <Image
-                src="/images/dillon-speaking-bcm.jpg"
-                alt="Dr. Dillon Small speaking on stage about training Body, Craft, and Mind"
+                src="/images/dillon-stage-front.jpg"
+                alt="Dr. Dillon Small posing on stage in front of a packed auditorium"
                 fill
                 className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             {/* Accent corner */}
@@ -52,6 +53,7 @@ export function About() {
                     alt={img.alt}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 1024px) 33vw, 16vw"
                   />
                 </div>
               ))}
