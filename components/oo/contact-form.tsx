@@ -184,6 +184,7 @@ export function ContactForm() {
                 id="firstName"
                 name="firstName"
                 required
+                aria-required="true"
                 placeholder="John"
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
