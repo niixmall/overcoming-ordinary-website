@@ -1,25 +1,10 @@
 import Image from "next/image"
-import { Target, Flame, Shield } from "lucide-react"
 
-const pillars = [
-  {
-    icon: Target,
-    title: "Mind",
-    description:
-      "Sharpen mental toughness, build unshakable focus, and develop the cognitive resilience that separates elite performers from the rest.",
-  },
-  {
-    icon: Flame,
-    title: "Body",
-    description:
-      "Optimize physical performance through intentional training, recovery, and the discipline to push past perceived limits every single day.",
-  },
-  {
-    icon: Shield,
-    title: "Soul",
-    description:
-      "Cultivate deep purpose, authentic connection, and the inner fire that fuels sustained excellence across every domain of life.",
-  },
+const frameworkItems = [
+  "Mental Toughness Under Pressure",
+  "Sustainable High Performance",
+  "Resilience Through Adversity",
+  "Purpose-Driven Excellence",
 ]
 
 export function Philosophy() {
@@ -55,27 +40,21 @@ export function Philosophy() {
           </p>
         </div>
 
-        {/* Pillars Grid */}
-        <div className="grid gap-px bg-border md:grid-cols-3">
-          {pillars.map((pillar) => {
-            const Icon = pillar.icon
-            return (
-              <div
-                key={pillar.title}
-                className="group bg-background p-10 transition-colors hover:bg-card sm:p-12"
+        {/* The Durable Mindset Framework */}
+        <div className="max-w-2xl">
+          <h3 className="mb-8 font-display text-3xl font-bold tracking-wide text-foreground sm:text-4xl">
+            The Durable Mindset Framework
+          </h3>
+          <ul className="flex flex-col gap-4">
+            {frameworkItems.map((item) => (
+              <li
+                key={item}
+                className="text-lg leading-relaxed text-muted-foreground"
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border transition-colors group-hover:border-accent group-hover:bg-accent/10">
-                  <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-accent" />
-                </div>
-                <h3 className="mb-4 font-display text-3xl tracking-wider text-foreground">
-                  {pillar.title.toUpperCase()}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {pillar.description}
-                </p>
-              </div>
-            )
-          })}
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
