@@ -59,13 +59,8 @@ export function Footer() {
               </h4>
               <ul className="flex flex-col gap-3">
                 <li>
-                  <a href="#philosophy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                    Philosophy
-                  </a>
-                </li>
-                <li>
                   <a href="#about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                    About
+                    Credentials
                   </a>
                 </li>
                 <li>
