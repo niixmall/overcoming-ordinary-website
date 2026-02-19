@@ -46,7 +46,7 @@ export function Partners() {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-card to-transparent" />
 
         {/* Scrolling track - duplicated for seamless loop */}
-        <div className="flex animate-marquee">
+        <div className="flex motion-safe:animate-marquee">
           {/* First set */}
           <div className="flex shrink-0">
             {partners.map((partner) => (
