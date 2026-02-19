@@ -16,10 +16,10 @@ export default function Page() {
       <Navbar />
       <Hero />
       <Philosophy />
+      <About />
       <QuoteBanner />
       <Training />
       <Domains />
-      <About />
       <Partners />
       <PlaybookCta />
       <Footer />
