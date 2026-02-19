@@ -71,7 +71,7 @@ export function Footer() {
                   href="/contact"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Contact Dr. Dillon
+                  Work With Dr. Dillon
                 </a>
               </li>
             </ul>

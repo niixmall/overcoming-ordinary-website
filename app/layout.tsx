@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Bebas_Neue } from 'next/font/google'
+import { ConsentProvider } from '@/lib/consent'
+import { CookieBanner } from '@/components/oo/cookie-banner'
+import { GatedScripts } from '@/components/oo/gated-scripts'
 
 import './globals.css'
 
@@ -115,13 +118,17 @@ export default function RootLayout({
       <body
         className={`${_inter.variable} ${_bebasNeue.variable} font-sans antialiased`}
       >
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-accent focus:px-6 focus:py-3 focus:text-sm focus:font-semibold focus:uppercase focus:tracking-wider focus:text-accent-foreground"
-        >
-          Skip to main content
-        </a>
-        {children}
+        <ConsentProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-accent focus:px-6 focus:py-3 focus:text-sm focus:font-semibold focus:uppercase focus:tracking-wider focus:text-accent-foreground"
+          >
+            Skip to main content
+          </a>
+          {children}
+          <CookieBanner />
+          <GatedScripts />
+        </ConsentProvider>
       </body>
     </html>
   )
