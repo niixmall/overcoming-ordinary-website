@@ -15,12 +15,12 @@ export default function Page() {
     <main id="main-content">
       <Navbar />
       <Hero />
+      <Partners />
       <Philosophy />
       <About />
       <QuoteBanner />
       <Training />
       <Domains />
-      <Partners />
       <PlaybookCta />
       <Footer />
     </main>
