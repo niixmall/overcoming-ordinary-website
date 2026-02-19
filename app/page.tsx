@@ -7,6 +7,7 @@ import { Domains } from "@/components/oo/domains"
 import { About } from "@/components/oo/about"
 
 import { Partners } from "@/components/oo/partners"
+import { PartnersGrid } from "@/components/oo/partners-grid"
 import { PlaybookCta } from "@/components/oo/playbook-cta"
 import { Footer } from "@/components/oo/footer"
 
@@ -21,6 +22,7 @@ export default function Page() {
       <QuoteBanner />
       <Training />
       <Domains />
+      <PartnersGrid />
       <PlaybookCta />
       <Footer />
     </main>
