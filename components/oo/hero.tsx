@@ -10,9 +10,9 @@ export function Hero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/videos/dillon-bg.mp4" type="video/mp4" />
+        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dillon%20BG-67naNHKTr7hVaJIjqKIXFUaSHrVin7.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-background/75" />
+      <div className="absolute inset-0 bg-black/60" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center pt-20">
         {/* Overline */}
