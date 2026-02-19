@@ -118,10 +118,10 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               <li>
                 <a
-                  href="mailto:hello@overcomingordinary.com"
+                  href="mailto:Business@overcomingordinary.com"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  hello@overcomingordinary.com
+                  Business@overcomingordinary.com
                 </a>
               </li>
             </ul>
