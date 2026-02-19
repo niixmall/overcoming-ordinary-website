@@ -18,18 +18,18 @@ const partners = [
 
 function PartnerItem({ partner }: { partner: (typeof partners)[number] }) {
   return (
-    <div className="flex shrink-0 items-center gap-3 px-10">
-      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted">
+    <div className="flex shrink-0 items-center gap-4 px-12">
+      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-sm">
         <Image
           src={partner.logo}
           alt={`${partner.name} logo`}
           fill
-          className="object-contain"
-          sizes="40px"
+          className="object-contain brightness-0 invert"
+          sizes="48px"
           loading="lazy"
         />
       </div>
-      <span className="whitespace-nowrap text-sm font-medium tracking-wide text-muted-foreground">
+      <span className="whitespace-nowrap text-sm font-semibold tracking-wide text-foreground/70">
         {partner.name}
       </span>
     </div>
@@ -49,17 +49,13 @@ export function Partners() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-card to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-card to-transparent" />
 
-        {/* Scrolling track */}
-        <div
-          className="flex w-max animate-marquee hover:[animation-play-state:paused]"
-        >
-          {/* First copy */}
-          {partners.map((partner) => (
-            <PartnerItem key={partner.name} partner={partner} />
+        {/* Scrolling track: two copies side by side, translates -50% for seamless loop */}
+        <div className="animate-marquee">
+          {partners.map((partner, i) => (
+            <PartnerItem key={`a-${i}`} partner={partner} />
           ))}
-          {/* Second copy for seamless loop */}
-          {partners.map((partner) => (
-            <PartnerItem key={`dup-${partner.name}`} partner={partner} />
+          {partners.map((partner, i) => (
+            <PartnerItem key={`b-${i}`} partner={partner} />
           ))}
         </div>
       </div>

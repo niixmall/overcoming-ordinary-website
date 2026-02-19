@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Target, Flame, Shield } from "lucide-react"
 
 const pillars = [
@@ -23,8 +24,19 @@ const pillars = [
 
 export function Philosophy() {
   return (
-    <section id="philosophy" className="relative py-28 sm:py-36">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="philosophy" className="relative overflow-hidden py-28 sm:py-36">
+      {/* Background image */}
+      <Image
+        src="/images/philosophy-bg.jpg"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-background/80" />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         {/* Section Header */}
         <div className="mb-20 max-w-3xl">
           <p className="mb-4 text-xs uppercase tracking-[0.4em] text-accent font-semibold">
