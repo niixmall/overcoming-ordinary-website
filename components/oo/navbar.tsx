@@ -102,9 +102,9 @@ export function Navbar() {
           className="text-foreground md:hidden"
           aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={mobileOpen}
-          aria-controls="mobile-menu"
+          {...(mobileOpen ? { "aria-controls": "mobile-menu" } : {})}
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
         </button>
       </div>
 
@@ -113,7 +113,6 @@ export function Navbar() {
         <div
           id="mobile-menu"
           ref={mobileMenuRef}
-          role="menu"
           className="fixed inset-0 z-50 flex flex-col bg-background md:hidden"
         >
           {/* Header with logo and close button */}
@@ -142,7 +141,6 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                role="menuitem"
                 className={`text-lg uppercase tracking-[0.2em] transition-colors ${
                   link.href === "/contact"
                     ? "text-accent hover:text-accent/80"
@@ -155,7 +153,6 @@ export function Navbar() {
             ))}
             <a
               href="/playbook"
-              role="menuitem"
               className="mt-4 bg-accent px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground"
               onClick={() => setMobileOpen(false)}
             >

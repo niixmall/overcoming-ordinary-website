@@ -68,7 +68,7 @@ export default function PlaybookPage() {
             <p className="mb-6 text-lg font-medium uppercase tracking-wider text-muted-foreground">
               {playbook.subtitle}
             </p>
-            <div className="mb-8 h-px w-16 bg-accent" />
+            <div className="mb-8 h-px w-16 bg-accent" aria-hidden="true" />
             <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
               {playbook.description}
             </p>

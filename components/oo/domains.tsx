@@ -40,7 +40,7 @@ export function Domains() {
             FOUR DOMAINS.
             <span className="block text-muted-foreground">ONE STANDARD.</span>
           </h2>
-          <div className="mx-auto mt-6 h-px w-16 bg-accent" />
+          <div className="mx-auto mt-6 h-px w-16 bg-accent" aria-hidden="true" />
         </div>
 
         {/* Domains Grid */}

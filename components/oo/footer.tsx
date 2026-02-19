@@ -53,7 +53,7 @@ export function Footer() {
           {/* Right: Two columns */}
           <div className="flex gap-16 sm:gap-24">
             {/* Navigate */}
-            <nav aria-label="Footer navigation">
+            <div>
               <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground">
                 Navigate
               </h4>
@@ -74,7 +74,7 @@ export function Footer() {
                   </a>
                 </li>
               </ul>
-            </nav>
+            </div>
 
             {/* Get To Work */}
             <div>
@@ -96,6 +96,7 @@ export function Footer() {
                   <a
                     href="mailto:Business@overcomingordinary.com"
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    aria-label="Email Business@overcomingordinary.com (opens email application)"
                   >
                     Business@overcomingordinary.com
                   </a>
