@@ -1,9 +1,20 @@
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export function PlaybookCta() {
   return (
-    <section id="playbook" className="relative bg-card py-28 sm:py-36">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="playbook" className="relative overflow-hidden bg-card py-28 sm:py-36">
+      {/* Background image */}
+      <Image
+        src="/images/dillon-speaking-bcm.jpg"
+        alt=""
+        fill
+        className="object-cover object-top"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-background/90" />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-accent">
             Join The O/o Team

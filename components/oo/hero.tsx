@@ -10,11 +10,11 @@ export function Hero() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/videos/dillon-bg.mp4" type="video/mp4" />
+        <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dillon%20BG-67naNHKTr7hVaJIjqKIXFUaSHrVin7.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-background/75" />
+      <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center pt-20">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center pt-20 pb-24">
         {/* Overline */}
         <p className="mb-8 text-xs uppercase tracking-[0.4em] text-accent font-semibold">
           Dominating Average
@@ -51,8 +51,17 @@ export function Hero() {
           enduring, gritty, resilient wellbeing in mind, body, and soul.
         </p>
 
+        {/* Scroll Indicator */}
+        <a
+          href="#philosophy"
+          className="mt-10 animate-bounce"
+          aria-label="Scroll down"
+        >
+          <ChevronDown className="h-6 w-6 text-muted-foreground" />
+        </a>
+
         {/* CTA Buttons */}
-        <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
           <a
             href="/playbook"
             className="bg-accent px-10 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
@@ -67,15 +76,6 @@ export function Hero() {
           </a>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <a
-        href="#philosophy"
-        className="absolute bottom-10 left-1/2 z-10 -translate-x-1/2 animate-bounce"
-        aria-label="Scroll down"
-      >
-        <ChevronDown className="h-6 w-6 text-muted-foreground" />
-      </a>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Play } from "lucide-react"
 
 const videos = [
@@ -36,21 +37,53 @@ export function SocialProof() {
   return (
     <section id="in-the-field" className="relative border-t border-border py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Header */}
-        <div className="mb-16 max-w-2xl">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-accent">
-            See It In Action
-          </p>
-          <h2 className="mb-4 font-display text-5xl tracking-wider text-foreground sm:text-6xl">
-            DR. DILLON SMALL
-            <br />
-            <span className="text-muted-foreground">IN THE FIELD</span>
-          </h2>
-          <p className="text-base leading-relaxed text-muted-foreground">
-            From keynote stages to locker rooms, from cockpits to classrooms --
-            watch Dr. Dillon Small bring the Overcoming Ordinary framework to
-            life.
-          </p>
+        {/* Header with photo */}
+        <div className="mb-16 grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-accent">
+              See It In Action
+            </p>
+            <h2 className="mb-4 font-display text-5xl tracking-wider text-foreground sm:text-6xl">
+              DR. DILLON SMALL
+              <br />
+              <span className="text-muted-foreground">IN THE FIELD</span>
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              From keynote stages to locker rooms, from cockpits to classrooms --
+              watch Dr. Dillon Small bring the Overcoming Ordinary framework to
+              life.
+            </p>
+          </div>
+          {/* Speaking photos grid */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/images/dillon-stage-front.jpg"
+                alt="Dr. Dillon Small speaking to a packed auditorium"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/images/dillon-stage-side.jpg"
+                alt="Dr. Dillon Small on stage addressing the audience"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
+            <div className="relative col-span-2 aspect-[2/1] overflow-hidden">
+              <Image
+                src="/images/dillon-stage-group.jpg"
+                alt="Dr. Dillon Small with colleagues on stage in front of packed theater"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Featured Video */}
