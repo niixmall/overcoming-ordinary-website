@@ -31,6 +31,7 @@ export default function PlaybookPage() {
               width={40}
               height={40}
               className="h-8 w-8 invert"
+              priority
             />
           </Link>
           <Link
