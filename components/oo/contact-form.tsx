@@ -120,7 +120,11 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
       {error && (
-        <div className="border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+        >
           {error}
         </div>
       )}
