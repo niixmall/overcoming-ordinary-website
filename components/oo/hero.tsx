@@ -14,7 +14,7 @@ export function Hero() {
       </video>
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center pt-20">
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center pt-20 pb-24">
         {/* Overline */}
         <p className="mb-8 text-xs uppercase tracking-[0.4em] text-accent font-semibold">
           Dominating Average
