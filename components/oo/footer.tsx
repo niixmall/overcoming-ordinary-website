@@ -70,7 +70,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a href="#training" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                    Training
+                    The Framework
                   </a>
                 </li>
                 <li>

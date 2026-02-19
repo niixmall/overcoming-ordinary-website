@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/oo/navbar"
 import { Hero } from "@/components/oo/hero"
-import { Philosophy } from "@/components/oo/philosophy"
 import { QuoteBanner } from "@/components/oo/quote-banner"
 import { Training } from "@/components/oo/training"
 import { Domains } from "@/components/oo/domains"
@@ -17,7 +16,6 @@ export default function Page() {
       <Navbar />
       <Hero />
       <Partners />
-      <Philosophy />
       <About />
       <QuoteBanner />
       <Training />
