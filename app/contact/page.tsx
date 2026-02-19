@@ -54,6 +54,17 @@ export default function ContactPage() {
           </p>
         </div>
 
+        {/* Speaking photo */}
+        <div className="relative mb-14 aspect-[21/9] overflow-hidden">
+          <Image
+            src="/images/dillon-stage-group.jpg"
+            alt="Dr. Dillon Small with colleagues on stage in front of a packed theater audience"
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 896px) 100vw, 896px"
+          />
+        </div>
+
         {/* Form */}
         <ContactForm />
       </div>

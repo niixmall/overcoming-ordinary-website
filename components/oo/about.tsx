@@ -16,8 +16,8 @@ const gallery = [
     alt: "Dr. Dillon Small official U.S. Air Force portrait",
   },
   {
-    src: "/images/dillon-podcast.jpg",
-    alt: "Dr. Dillon Small featured on the Elev8 Podcast discussing tactile attention",
+    src: "/images/dillon-stage-front.jpg",
+    alt: "Dr. Dillon Small posing on stage in front of a packed auditorium",
   },
 ]
 
@@ -30,8 +30,8 @@ export function About() {
           <div className="relative">
             <div className="relative aspect-[16/9] overflow-hidden">
               <Image
-                src="/images/dillon-ncls.jpg"
-                alt="Dr. Dillon Small - 30th National Character & Leadership Symposium keynote speaker"
+                src="/images/dillon-speaking-bcm.jpg"
+                alt="Dr. Dillon Small speaking on stage about training Body, Craft, and Mind"
                 fill
                 className="object-cover object-top"
               />
