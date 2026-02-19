@@ -39,11 +39,17 @@ export function Navbar() {
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [handleKeyDown])
 
-  // Focus first link when mobile menu opens
+  // Lock body scroll & focus first link when mobile menu opens
   useEffect(() => {
     if (mobileOpen) {
+      document.body.style.overflow = "hidden"
       const firstLink = mobileMenuRef.current?.querySelector("a")
       firstLink?.focus()
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
     }
   }, [mobileOpen])
 
@@ -102,20 +108,42 @@ export function Navbar() {
         </button>
       </div>
 
+      {/* Full-screen mobile menu overlay */}
       {mobileOpen && (
         <div
           id="mobile-menu"
           ref={mobileMenuRef}
           role="menu"
-          className="border-t border-border/50 bg-background/95 backdrop-blur-md px-6 pb-8 pt-6 md:hidden"
+          className="fixed inset-0 z-50 flex flex-col bg-background md:hidden"
         >
-          <div className="flex flex-col gap-5">
+          {/* Header with logo and close button */}
+          <div className="flex items-center justify-between px-6 py-5">
+            <a href="/" className="flex items-center" onClick={() => setMobileOpen(false)}>
+              <Image
+                src="/images/oo-logo.png"
+                alt="Overcoming Ordinary - Home"
+                width={48}
+                height={48}
+                className="h-10 w-10 invert"
+              />
+            </a>
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="text-foreground"
+              aria-label="Close navigation menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Nav links */}
+          <div className="flex flex-1 flex-col justify-center gap-8 px-8">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 role="menuitem"
-                className={`text-sm uppercase tracking-[0.2em] transition-colors ${
+                className={`text-lg uppercase tracking-[0.2em] transition-colors ${
                   link.href === "/contact"
                     ? "text-accent hover:text-accent/80"
                     : "text-muted-foreground hover:text-foreground"
@@ -128,7 +156,7 @@ export function Navbar() {
             <a
               href="/playbook"
               role="menuitem"
-              className="mt-2 bg-accent px-6 py-3 text-center text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground"
+              className="mt-4 bg-accent px-6 py-4 text-center text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground"
               onClick={() => setMobileOpen(false)}
             >
               Free Playbook
