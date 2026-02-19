@@ -117,10 +117,10 @@ export function middleware(request: NextRequest) {
     "camera=(), microphone=(), geolocation=()"
   )
 
-  // Allow Turnstile in CSP
+  // Allow Turnstile in CSP - use report-only to avoid blocking Next.js scripts
   if (!pathname.startsWith("/api/")) {
     response.headers.set(
-      "Content-Security-Policy",
+      "Content-Security-Policy-Report-Only",
       "frame-src 'self' https://challenges.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com;"
     )
   }
