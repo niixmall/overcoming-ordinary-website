@@ -14,10 +14,13 @@ const navLinks = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    setMounted(true)
+    setScrolled(window.scrollY > 50)
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -57,7 +60,7 @@ export function Navbar() {
     <nav
       aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        scrolled
+        mounted && scrolled
           ? "bg-background border-b border-border/50 shadow-lg"
           : "bg-transparent"
       }`}
