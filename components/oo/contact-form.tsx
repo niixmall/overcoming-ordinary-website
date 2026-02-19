@@ -168,7 +168,7 @@ export function ContactForm() {
 
       {/* Contact Details */}
       {selectedService && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-500">
           <p className="mb-1 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
             Step 2
           </p>
