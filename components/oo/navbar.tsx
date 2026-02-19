@@ -14,10 +14,13 @@ const navLinks = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
+    setMounted(true)
+    setScrolled(window.scrollY > 50)
     const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -39,26 +42,37 @@ export function Navbar() {
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [handleKeyDown])
 
-  // Lock body scroll & focus first link when mobile menu opens
+  // Lock body scroll, inert background content, and focus trap when mobile menu opens
   useEffect(() => {
+    const mainContent = document.getElementById("main-content")
+    const footer = document.querySelector("footer")
+
     if (mobileOpen) {
       document.body.style.overflow = "hidden"
+      // Make background content inert (non-interactive, hidden from AT)
+      mainContent?.setAttribute("inert", "")
+      footer?.setAttribute("inert", "")
+      // Focus first link in menu
       const firstLink = mobileMenuRef.current?.querySelector("a")
       firstLink?.focus()
     } else {
       document.body.style.overflow = ""
+      mainContent?.removeAttribute("inert")
+      footer?.removeAttribute("inert")
     }
     return () => {
       document.body.style.overflow = ""
+      mainContent?.removeAttribute("inert")
+      footer?.removeAttribute("inert")
     }
   }, [mobileOpen])
 
   return (
     <nav
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border/50"
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        mounted && scrolled
+          ? "bg-background border-b border-border/50 shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -113,6 +127,27 @@ export function Navbar() {
         <div
           id="mobile-menu"
           ref={mobileMenuRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation menu"
+          onKeyDown={(e) => {
+            if (e.key === "Tab") {
+              const focusable = mobileMenuRef.current?.querySelectorAll<HTMLElement>(
+                'a[href], button, [tabindex]:not([tabindex="-1"])'
+              )
+              if (focusable && focusable.length > 0) {
+                const first = focusable[0]
+                const last = focusable[focusable.length - 1]
+                if (e.shiftKey && document.activeElement === first) {
+                  e.preventDefault()
+                  last.focus()
+                } else if (!e.shiftKey && document.activeElement === last) {
+                  e.preventDefault()
+                  first.focus()
+                }
+              }
+            }
+          }}
           className="fixed inset-0 z-50 flex flex-col bg-background md:hidden"
         >
           {/* Header with logo and close button */}
