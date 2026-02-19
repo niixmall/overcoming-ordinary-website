@@ -40,7 +40,7 @@ export function Training() {
             THE DURABLE
             <span className="block text-muted-foreground">MINDSET FRAMEWORK.</span>
           </h2>
-          <div className="mt-6 h-px w-16 bg-accent" />
+          <div className="mt-6 h-px w-16 bg-accent" aria-hidden="true" />
         </div>
 
         {/* Framework Grid */}

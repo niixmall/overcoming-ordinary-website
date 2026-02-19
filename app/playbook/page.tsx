@@ -8,19 +8,28 @@ import { PLAYBOOKS } from "@/lib/playbooks"
 const playbook = PLAYBOOKS[0]
 
 export const metadata: Metadata = {
-  title: `${playbook.title} | Free Download | Overcoming Ordinary`,
+  title: `${playbook.title} | Free Download`,
   description: playbook.metaDescription,
   keywords: playbook.keywords,
+  alternates: {
+    canonical: "https://overcomingordinary.com/playbook",
+  },
   openGraph: {
+    title: `${playbook.title} | Free Download | Overcoming Ordinary`,
+    description: playbook.metaDescription,
+    url: "https://overcomingordinary.com/playbook",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: `${playbook.title} | Free Download`,
     description: playbook.subtitle,
-    type: "website",
   },
 }
 
 export default function PlaybookPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">

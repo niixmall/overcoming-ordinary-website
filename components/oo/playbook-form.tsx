@@ -1,14 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { Download, Loader2, CheckCircle2 } from "lucide-react"
 import { PLAYBOOKS } from "@/lib/playbooks"
-
-const WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbzZSp1x7IpyFxmO1ZuymohbE4cWz8_IhmBAzns_uywvB0zOPnbl8bZRAveX1kY9jWpOlQ/exec"
+import { Turnstile } from "@/components/oo/turnstile"
 
 interface PlaybookFormProps {
   playbookSlug?: string
@@ -17,35 +15,54 @@ interface PlaybookFormProps {
 export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormProps) {
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const formStartTime = useRef(Date.now())
 
   const playbook = PLAYBOOKS.find((p) => p.slug === playbookSlug) ?? PLAYBOOKS[0]
+
+  // Reset start time on mount
+  useEffect(() => {
+    formStartTime.current = Date.now()
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
+    setError(null)
 
     const formData = new FormData(e.currentTarget)
 
     try {
-      await fetch(WEBHOOK_URL, {
+      const res = await fetch("/api/submit-playbook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          formType: "playbook",
-          playbook: playbookSlug,
           firstName: formData.get("firstName"),
           lastName: formData.get("lastName"),
           email: formData.get("email"),
           role: formData.get("role"),
+          playbook: playbookSlug,
+          _turnstileToken: turnstileToken || "",
+          _hp_company: formData.get("company"),
+          _formStartTime: String(formStartTime.current),
         }),
-        mode: "no-cors",
       })
-    } catch {
-      // Webhook may not return CORS headers; submission still goes through
-    }
 
-    setLoading(false)
-    setSubmitted(true)
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.")
+        setLoading(false)
+        return
+      }
+
+      setLoading(false)
+      setSubmitted(true)
+    } catch {
+      setError("Network error. Please check your connection and try again.")
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -86,6 +103,16 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
         Enter your info below and get instant access. Training starts today.
       </p>
 
+      {error && (
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="mb-6 border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+        >
+          {error}
+        </div>
+      )}
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label
@@ -98,6 +125,7 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
             id="pb-firstName"
             name="firstName"
             required
+            aria-required="true"
             placeholder="John"
             className="border-border bg-background text-foreground placeholder:text-muted-foreground/50"
           />
@@ -113,6 +141,7 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
             id="pb-lastName"
             name="lastName"
             required
+            aria-required="true"
             placeholder="Doe"
             className="border-border bg-background text-foreground placeholder:text-muted-foreground/50"
           />
@@ -129,6 +158,7 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
             name="email"
             type="email"
             required
+            aria-required="true"
             placeholder="john@example.com"
             className="border-border bg-background text-foreground placeholder:text-muted-foreground/50"
           />
@@ -149,6 +179,24 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
         </div>
       </div>
 
+      {/* Honeypot -- hidden from real users, visible to bots */}
+      <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
+        <label htmlFor="pb-company">Company</label>
+        <input
+          type="text"
+          id="pb-company"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
+      {/* Turnstile invisible widget */}
+      <Turnstile
+        onVerify={(token) => setTurnstileToken(token)}
+        onError={() => setError("Bot verification failed. Please refresh and try again.")}
+      />
+
       <Button
         type="submit"
         disabled={loading}
@@ -166,6 +214,13 @@ export function PlaybookForm({ playbookSlug = "focus-playbook" }: PlaybookFormPr
           </>
         )}
       </Button>
+      <p className="mt-3 text-xs text-muted-foreground">
+        By submitting, you agree to our{" "}
+        <a href="/privacy" className="underline hover:text-foreground">
+          Privacy Policy
+        </a>
+        .
+      </p>
     </form>
   )
 }

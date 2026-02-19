@@ -8,6 +8,30 @@
   }
 }
 
+/* Marquee animation -- outside @layer so Tailwind JIT doesn't purge it */
+.animate-marquee {
+  display: flex;
+  animation: marquee 17s linear infinite;
+  will-change: transform;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 4%;

@@ -1,18 +1,50 @@
+"use client"
+
+import { useEffect, useRef, useState } from "react"
 import { ChevronDown } from "lucide-react"
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
+    setPrefersReducedMotion(mq.matches)
+
+    if (mq.matches && videoRef.current) {
+      videoRef.current.pause()
+    }
+
+    const handler = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches)
+      if (e.matches) {
+        videoRef.current?.pause()
+      } else {
+        videoRef.current?.play()
+      }
+    }
+    mq.addEventListener("change", handler)
+    return () => mq.removeEventListener("change", handler)
+  }, [])
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      aria-label="Hero introduction"
+    >
       <video
-        autoPlay
+        ref={videoRef}
+        autoPlay={!prefersReducedMotion}
         muted
         loop
         playsInline
+        preload="metadata"
+        poster="/images/hero-poster.jpg"
         className="absolute inset-0 h-full w-full object-cover"
       >
         <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dillon%20BG-67naNHKTr7hVaJIjqKIXFUaSHrVin7.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center px-6 text-center pt-20 pb-24">
         {/* Overline */}
@@ -29,7 +61,7 @@ export function Hero() {
         </h1>
 
         {/* Accent line */}
-        <div className="my-10 h-px w-20 bg-accent" />
+        <div className="my-10 h-px w-20 bg-accent" aria-hidden="true" />
 
         {/* Tagline */}
         <div className="mb-10 flex flex-col items-center">
@@ -54,8 +86,8 @@ export function Hero() {
         {/* Scroll Indicator */}
         <a
           href="#philosophy"
-          className="mt-10 animate-bounce"
-          aria-label="Scroll down"
+          className="mt-10 motion-safe:animate-bounce"
+          aria-label="Scroll to Philosophy section"
         >
           <ChevronDown className="h-6 w-6 text-muted-foreground" />
         </a>
@@ -69,10 +101,10 @@ export function Hero() {
             Get Your Free Playbook
           </a>
           <a
-            href="#philosophy"
+            href="/contact"
             className="border border-foreground/20 px-10 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:border-foreground/50 hover:bg-foreground/5"
           >
-            Learn More
+            Work With Dr. Dillon
           </a>
         </div>
       </div>

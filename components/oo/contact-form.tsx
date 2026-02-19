@@ -1,14 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { CheckCircle2, ArrowRight, Loader2 } from "lucide-react"
-
-const WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbzZSp1x7IpyFxmO1ZuymohbE4cWz8_IhmBAzns_uywvB0zOPnbl8bZRAveX1kY9jWpOlQ/exec"
+import { Turnstile } from "@/components/oo/turnstile"
 
 const intentMap: Record<string, string> = {
   keynote: "Keynote Speaking",
@@ -48,34 +46,52 @@ export function ContactForm() {
   const [selectedService, setSelectedService] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
+  const formStartTime = useRef(Date.now())
+
+  useEffect(() => {
+    formStartTime.current = Date.now()
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setLoading(true)
+    setError(null)
 
     const formData = new FormData(e.currentTarget)
 
     try {
-      await fetch(WEBHOOK_URL, {
+      const res = await fetch("/api/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          formType: "contact",
           intent: intentMap[selectedService ?? "other"],
           firstName: formData.get("firstName"),
           lastName: formData.get("lastName"),
           email: formData.get("email"),
           organization: formData.get("organization"),
           details: formData.get("message"),
+          _turnstileToken: turnstileToken || "",
+          _hp_company: formData.get("company"),
+          _formStartTime: String(formStartTime.current),
         }),
-        mode: "no-cors",
       })
-    } catch {
-      // Webhook may not return CORS headers; submission still goes through
-    }
 
-    setLoading(false)
-    setSubmitted(true)
+      const data = await res.json()
+
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.")
+        setLoading(false)
+        return
+      }
+
+      setLoading(false)
+      setSubmitted(true)
+    } catch {
+      setError("Network error. Please check your connection and try again.")
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -103,6 +119,16 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
+      {error && (
+        <div
+          role="alert"
+          aria-live="assertive"
+          className="border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
+        >
+          {error}
+        </div>
+      )}
+
       {/* Service Type Selection */}
       <div>
         <p className="mb-1 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
@@ -142,7 +168,7 @@ export function ContactForm() {
 
       {/* Contact Details */}
       {selectedService && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 motion-safe:duration-500">
           <p className="mb-1 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
             Step 2
           </p>
@@ -158,6 +184,7 @@ export function ContactForm() {
                 id="firstName"
                 name="firstName"
                 required
+                aria-required="true"
                 placeholder="John"
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
@@ -170,6 +197,7 @@ export function ContactForm() {
                 id="lastName"
                 name="lastName"
                 required
+                aria-required="true"
                 placeholder="Doe"
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
@@ -183,6 +211,7 @@ export function ContactForm() {
                 name="email"
                 type="email"
                 required
+                aria-required="true"
                 placeholder="john@example.com"
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
@@ -206,12 +235,31 @@ export function ContactForm() {
                 id="message"
                 name="message"
                 required
+                aria-required="true"
                 rows={5}
                 placeholder="Describe your event, team size, goals, timeline, or any other details that would help Dr. Dillon understand how he can serve you best."
                 className="border-border bg-card text-foreground placeholder:text-muted-foreground/50"
               />
             </div>
           </div>
+
+          {/* Honeypot -- hidden from real users */}
+          <div className="absolute -left-[9999px] opacity-0" aria-hidden="true">
+            <label htmlFor="ct-company">Company</label>
+            <input
+              type="text"
+              id="ct-company"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
+          {/* Turnstile invisible widget */}
+          <Turnstile
+            onVerify={(token) => setTurnstileToken(token)}
+            onError={() => setError("Bot verification failed. Please refresh and try again.")}
+          />
 
           <Button
             type="submit"
@@ -230,6 +278,13 @@ export function ContactForm() {
               </>
             )}
           </Button>
+          <p className="mt-3 text-xs text-muted-foreground">
+            By submitting, you agree to our{" "}
+            <a href="/privacy" className="underline hover:text-foreground">
+              Privacy Policy
+            </a>
+            .
+          </p>
         </div>
       )}
     </form>

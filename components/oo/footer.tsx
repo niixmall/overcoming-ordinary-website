@@ -1,12 +1,18 @@
+"use client"
+
 import Image from "next/image"
+import { useConsent } from "@/lib/consent"
 
 export function Footer() {
+  const { openPreferences } = useConsent()
+
   return (
     <footer className="border-t border-border py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+        {/* Main footer content */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:justify-between">
+          {/* Left: Brand + blurb + LinkedIn */}
+          <div className="max-w-sm">
             <Image
               src="/images/oo-logo.png"
               alt="Overcoming Ordinary"
@@ -14,188 +20,119 @@ export function Footer() {
               height={48}
               className="h-12 w-12 invert"
             />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Dominating average through enduring, gritty, resilient wellbeing in
               mind, body, and soul.
             </p>
+            <a
+              href="https://www.linkedin.com/in/dr-dillon-small/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex h-9 w-9 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+              aria-label="LinkedIn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h4 className="mb-4 text-xs uppercase tracking-[0.25em] text-foreground font-semibold">
-              Navigate
-            </h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <a
-                  href="#philosophy"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Philosophy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#domains"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Domains
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  About Dr. Dillon
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/playbook"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Free Playbook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Contact Dr. Dillon
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Right: Two columns */}
+          <div className="flex gap-16 sm:gap-24">
+            {/* Navigate */}
+            <nav aria-label="Footer navigation">
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground">
+                Navigate
+              </h4>
+              <ul className="flex flex-col gap-3">
+                <li>
+                  <a href="#about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    Credentials
+                  </a>
+                </li>
+                <li>
+                  <a href="#training" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    The Framework
+                  </a>
+                </li>
+                <li>
+                  <a href="#domains" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    Domains
+                  </a>
+                </li>
+              </ul>
+            </nav>
 
-          {/* Domains */}
-          <div>
-            <h4 className="mb-4 text-xs uppercase tracking-[0.25em] text-foreground font-semibold">
-              Domains
-            </h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <a
-                  href="#domains"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Athletics
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#domains"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Business
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#domains"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Academics
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#domains"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Parenting
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="mb-4 text-xs uppercase tracking-[0.25em] text-foreground font-semibold">
-              Get In Touch
-            </h4>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <a
-                  href="mailto:Business@overcomingordinary.com"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Business@overcomingordinary.com
-                </a>
-              </li>
-            </ul>
-            <div className="mt-6 flex gap-4">
-              <a
-                href="#"
-                className="flex h-9 w-9 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent"
-                aria-label="Instagram"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="flex h-9 w-9 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent"
-                aria-label="Twitter / X"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="flex h-9 w-9 items-center justify-center border border-border text-muted-foreground transition-colors hover:border-accent hover:text-accent"
-                aria-label="LinkedIn"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
-                </svg>
-              </a>
+            {/* Get To Work */}
+            <div>
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-foreground">
+                Get To Work
+              </h4>
+              <ul className="flex flex-col gap-3">
+                <li>
+                  <a href="/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    Work With Dr. Dillon
+                  </a>
+                </li>
+                <li>
+                  <a href="/playbook" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    Free Playbook
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:Business@overcomingordinary.com"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    Business@overcomingordinary.com
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-8 sm:flex-row sm:items-center">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Overcoming Ordinary. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Overcoming Ordinary. All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground">
-            Performance over Pathology.
-          </p>
+          <nav aria-label="Legal links" className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a href="/privacy" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+              Privacy
+            </a>
+            <a href="/terms" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+              Terms
+            </a>
+            <a href="/cookie-policy" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+              Cookies
+            </a>
+            <a href="/accessibility" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+              Accessibility
+            </a>
+            <a href="/data-rights" className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+              Data Rights
+            </a>
+            <button
+              onClick={openPreferences}
+              className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Cookie Preferences
+            </button>
+          </nav>
         </div>
       </div>
     </footer>

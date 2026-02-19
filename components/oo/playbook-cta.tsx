@@ -22,7 +22,7 @@ export function PlaybookCta() {
           <h2 className="font-display text-5xl tracking-wider text-foreground sm:text-6xl md:text-7xl">
             DOMINATE AVERAGE.
           </h2>
-          <div className="mx-auto mt-6 h-px w-16 bg-accent" />
+          <div className="mx-auto mt-6 h-px w-16 bg-accent" aria-hidden="true" />
           <p className="mt-8 text-base leading-relaxed text-muted-foreground sm:text-lg">
             Get your free Focus Playbook -- a personalized training program for
             expert focus. No fluff. No shortcuts. Just the proven framework used
