@@ -92,15 +92,7 @@ export function Footer() {
                     Free Playbook
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="mailto:Business@overcomingordinary.com"
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label="Email Business@overcomingordinary.com (opens email application)"
-                  >
-                    Business@overcomingordinary.com
-                  </a>
-                </li>
+
               </ul>
             </div>
           </div>
