@@ -11,7 +11,7 @@
 /* Marquee animation -- outside @layer so Tailwind JIT doesn't purge it */
 .animate-marquee {
   display: flex;
-  animation: marquee 30s linear infinite;
+  animation: marquee 17s linear infinite;
   will-change: transform;
 }
 
