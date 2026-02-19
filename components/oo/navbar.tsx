@@ -9,7 +9,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Training", href: "#training" },
   { label: "Domains", href: "#domains" },
-  { label: "Contact", href: "/contact" },
+  { label: "Work With Dr. Dillon", href: "/contact" },
 ]
 
 export function Navbar() {
@@ -75,7 +75,7 @@ export function Navbar() {
               key={link.label}
               href={link.href}
               className={`text-xs uppercase tracking-[0.25em] transition-colors ${
-                link.label === "Contact"
+                link.href === "/contact"
                   ? "text-accent hover:text-accent/80"
                   : "text-muted-foreground hover:text-foreground"
               }`}
@@ -117,7 +117,7 @@ export function Navbar() {
                 href={link.href}
                 role="menuitem"
                 className={`text-sm uppercase tracking-[0.2em] transition-colors ${
-                  link.label === "Contact"
+                  link.href === "/contact"
                     ? "text-accent hover:text-accent/80"
                     : "text-muted-foreground hover:text-foreground"
                 }`}

@@ -1,18 +1,18 @@
 import Image from "next/image"
 
 const partners = [
-  { name: "Liberty University", logo: "/images/partners/liberty.png" },
+  { name: "Liberty University", logo: "/images/partners/liberty-mono.jpg" },
   { name: "U.S. Air Force Academy", logo: "/images/partners/usafa.jpg" },
   { name: "University of Nebraska", logo: "/images/partners/nebraska.jpg" },
   { name: "University of Colorado Boulder", logo: "/images/partners/cu-boulder.jpg" },
   { name: "Denver University", logo: "/images/partners/denver.jpg" },
-  { name: "Western Michigan University", logo: "/images/partners/western-michigan.png" },
+  { name: "Western Michigan University", logo: "/images/partners/wmu-mono.jpg" },
   { name: "University of North Dakota", logo: "/images/partners/north-dakota.jpg" },
   { name: "4th Judicial District Colorado Springs", logo: "/images/partners/4th-judicial.jpg" },
   { name: "10th Judicial District Boulder", logo: "/images/partners/4th-judicial.jpg" },
   { name: "Youth For Christ", logo: "/images/partners/yfc.jpg" },
   { name: "Undergraduate Aviation Association", logo: "/images/partners/usafa.jpg" },
-  { name: "Winter Symposium", logo: "/images/partners/aasp.jpg" },
+  { name: "Pikes Peak UND Winter Symposium", logo: "/images/partners/winter-symposium.jpg" },
   { name: "Assoc. of Applied Sport Psychology", logo: "/images/partners/aasp.jpg" },
 ]
 
