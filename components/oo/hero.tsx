@@ -40,8 +40,7 @@ export function Hero() {
         playsInline
         preload="metadata"
         poster="/images/hero-poster.jpg"
-        style={{ objectPosition: "center 60%" }}
-        className="absolute inset-0 h-full w-full object-cover sm:!object-center"
+        className="absolute inset-0 h-full w-full object-contain object-center sm:object-cover"
       >
         <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dillon%20BG-67naNHKTr7hVaJIjqKIXFUaSHrVin7.mp4" type="video/mp4" />
       </video>
