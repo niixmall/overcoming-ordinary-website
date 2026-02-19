@@ -5,9 +5,15 @@ import { ArrowLeft } from "lucide-react"
 import { ContactForm } from "@/components/oo/contact-form"
 
 export const metadata: Metadata = {
-  title: "Contact Dr. Dillon Small | Overcoming Ordinary",
+  title: "Contact Dr. Dillon Small",
   description:
     "Book Dr. Dillon Small for keynote speaking, custom curriculum development, or personalized high-performance coaching. Dominate average.",
+  openGraph: {
+    title: "Work With Dr. Dillon Small",
+    description:
+      "Book Dr. Dillon Small for keynote speaking, custom training, or one-on-one coaching.",
+    type: "website",
+  },
 }
 
 export default function ContactPage() {

@@ -15,9 +15,44 @@ const _bebasNeue = Bebas_Neue({
 })
 
 export const metadata: Metadata = {
-  title: 'Overcoming Ordinary | Dominating Average',
+  title: {
+    default: 'Overcoming Ordinary | Dominate Average',
+    template: '%s | Overcoming Ordinary',
+  },
   description:
-    'Performance over Pathology. Dr. Dillon has spent over 16 years helping high performers elevate their game in athletics, business, academics, and parenting.',
+    'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, academics, and parenting.',
+  metadataBase: new URL('https://overcomingordinary.com'),
+  keywords: [
+    'performance psychology',
+    'Dr. Dillon Small',
+    'mental performance',
+    'high performance coaching',
+    'keynote speaker',
+    'athletics psychology',
+    'business performance',
+    'overcoming ordinary',
+  ],
+  authors: [{ name: 'Dr. Dillon Small' }],
+  creator: 'Overcoming Ordinary',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Overcoming Ordinary',
+    title: 'Overcoming Ordinary | Dominate Average',
+    description:
+      'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, academics, and parenting.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Overcoming Ordinary | Dominate Average',
+    description:
+      'Performance over Pathology. Dr. Dillon Small helps high performers elevate their game.',
+    creator: '@drdillonsmall',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export const viewport: Viewport = {
