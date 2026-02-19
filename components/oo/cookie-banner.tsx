@@ -69,6 +69,7 @@ export function CookieBanner() {
               </p>
             </div>
             <button
+              type="button"
               onClick={() => setShowPreferences(false)}
               className="ml-4 text-muted-foreground hover:text-foreground"
               aria-label="Close cookie preferences"
@@ -108,14 +109,16 @@ export function CookieBanner() {
             ))}
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row" role="group" aria-label="Save cookie preferences">
             <button
+              type="button"
               onClick={() => savePreferences(prefs)}
               className="flex-1 bg-accent px-6 py-3 text-xs font-semibold uppercase tracking-wider text-accent-foreground transition-opacity hover:opacity-90"
             >
               Save Preferences
             </button>
             <button
+              type="button"
               onClick={() => {
                 acceptAll()
                 setShowPreferences(false)
@@ -150,20 +153,23 @@ export function CookieBanner() {
           </a>
           . You can manage your preferences anytime.
         </p>
-        <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="flex shrink-0 flex-col gap-2 sm:flex-row sm:items-center" role="group" aria-label="Cookie consent options">
           <button
+            type="button"
             onClick={rejectAll}
             className="border border-border px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:bg-foreground/5"
           >
             Reject All
           </button>
           <button
+            type="button"
             onClick={() => setShowPreferences(true)}
             className="border border-border px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:bg-foreground/5"
           >
             Manage Preferences
           </button>
           <button
+            type="button"
             onClick={acceptAll}
             className="bg-accent px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-accent-foreground transition-opacity hover:opacity-90"
           >

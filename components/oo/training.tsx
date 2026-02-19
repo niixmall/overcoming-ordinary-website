@@ -53,7 +53,7 @@ export function Training() {
                 className="group flex gap-6 bg-background p-10 transition-colors hover:bg-card sm:p-12"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-border transition-colors group-hover:border-accent group-hover:bg-accent/10">
-                  <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-accent" />
+                  <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-accent" aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="mb-3 font-display text-2xl tracking-wider text-foreground">
@@ -72,7 +72,7 @@ export function Training() {
         <div className="mt-20 border border-border bg-card p-10 sm:p-14">
           <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:gap-16">
             <div className="flex h-20 w-20 shrink-0 items-center justify-center border-2 border-accent">
-              <Crosshair className="h-8 w-8 text-accent" />
+              <Crosshair className="h-8 w-8 text-accent" aria-hidden="true" />
             </div>
             <div className="flex-1">
               <p className="mb-2 text-xs font-semibold uppercase tracking-[0.4em] text-accent">
@@ -91,7 +91,7 @@ export function Training() {
             </div>
             <a
               href="/playbook"
-              className="inline-flex shrink-0 items-center gap-2 bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
+              className="inline-flex shrink-0 self-start items-center gap-2 bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90 lg:self-center"
             >
               Get the Playbook
             </a>

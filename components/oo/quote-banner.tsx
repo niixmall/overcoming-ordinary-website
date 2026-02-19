@@ -15,7 +15,7 @@ export function QuoteBanner() {
 
       <div className="relative mx-auto max-w-5xl px-6 text-center">
         {/* Large decorative O/o */}
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.03]">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.03]" aria-hidden="true">
           <span className="font-display text-[20rem] leading-none tracking-wider text-foreground sm:text-[30rem]">
             O/o
           </span>
@@ -26,7 +26,7 @@ export function QuoteBanner() {
             {'"'}THERE ARE FEW CONCEPTS,
             <span className="block text-accent">MANY METHODS, AND NO HACKS.{'"'}</span>
           </p>
-          <div className="mx-auto mt-8 h-px w-12 bg-border" />
+          <div className="mx-auto mt-8 h-px w-12 bg-border" aria-hidden="true" />
           <cite className="mt-6 block text-xs uppercase tracking-[0.3em] text-muted-foreground not-italic">
             The O/o Principle
           </cite>

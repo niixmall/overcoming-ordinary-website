@@ -85,11 +85,11 @@ export function Hero() {
 
         {/* Scroll Indicator */}
         <a
-          href="#philosophy"
+          href="#about"
           className="mt-10 motion-safe:animate-bounce"
-          aria-label="Scroll to Philosophy section"
+          aria-label="Scroll to Credentials section"
         >
-          <ChevronDown className="h-6 w-6 text-muted-foreground" />
+          <ChevronDown className="h-6 w-6 text-muted-foreground" aria-hidden="true" />
         </a>
 
         {/* CTA Buttons */}

@@ -12,17 +12,19 @@ import { Footer } from "@/components/oo/footer"
 
 export default function Page() {
   return (
-    <main id="main-content">
+    <>
       <Navbar />
-      <Hero />
-      <Partners />
-      <About />
-      <QuoteBanner />
-      <Training />
-      <Domains />
-      <PartnersGrid />
-      <PlaybookCta />
+      <main id="main-content">
+        <Hero />
+        <Partners />
+        <About />
+        <QuoteBanner />
+        <Training />
+        <Domains />
+        <PartnersGrid />
+        <PlaybookCta />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
