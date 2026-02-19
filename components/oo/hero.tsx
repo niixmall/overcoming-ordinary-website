@@ -101,10 +101,10 @@ export function Hero() {
             Get Your Free Playbook
           </a>
           <a
-            href="#philosophy"
+            href="/contact"
             className="border border-foreground/20 px-10 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:border-foreground/50 hover:bg-foreground/5"
           >
-            Learn More
+            Work With Dr. Dillon
           </a>
         </div>
       </div>
