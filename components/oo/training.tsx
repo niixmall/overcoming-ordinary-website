@@ -91,7 +91,7 @@ export function Training() {
             </div>
             <a
               href="/playbook"
-              className="inline-flex shrink-0 items-center gap-2 bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90"
+              className="inline-flex shrink-0 self-start items-center gap-2 bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-accent-foreground transition-opacity hover:opacity-90 lg:self-center"
             >
               Get the Playbook
             </a>
