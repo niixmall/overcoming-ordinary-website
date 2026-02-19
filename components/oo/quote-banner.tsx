@@ -1,7 +1,19 @@
+import Image from "next/image"
+
 export function QuoteBanner() {
   return (
     <section className="relative overflow-hidden border-y border-border bg-background py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-6 text-center">
+      {/* Background image */}
+      <Image
+        src="/images/dillon-stage-audience.jpg"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-background/85" />
+
+      <div className="relative mx-auto max-w-5xl px-6 text-center">
         {/* Large decorative O/o */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.03]">
           <span className="font-display text-[20rem] leading-none tracking-wider text-foreground sm:text-[30rem]">
