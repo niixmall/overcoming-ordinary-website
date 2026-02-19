@@ -52,10 +52,11 @@ export function Domains() {
             >
               <Image
                 src={domain.image}
-                alt={`${domain.title} performance coaching`}
+                alt={`${domain.title} performance coaching -- Dr. Dillon Small helping ${domain.title.toLowerCase()} professionals dominate average`}
                 fill
                 sizes="(max-width: 640px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />

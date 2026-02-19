@@ -18,9 +18,9 @@ export function Partners() {
   return (
     <section className="relative border-t border-border py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="mb-12 text-center text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
+        <h2 className="mb-12 text-center text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
           Training Partners
-        </p>
+        </h2>
 
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {partners.map((partner) => (

@@ -21,7 +21,7 @@ export function Footer() {
           </div>
 
           {/* Navigation */}
-          <div>
+          <nav aria-label="Footer navigation">
             <h4 className="mb-4 text-xs uppercase tracking-[0.25em] text-foreground font-semibold">
               Navigate
             </h4>
@@ -36,18 +36,26 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#domains"
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  Domains
-                </a>
-              </li>
-              <li>
-                <a
                   href="#about"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   About Dr. Dillon
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#training"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Training
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#domains"
+                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Domains
                 </a>
               </li>
               <li>
@@ -67,7 +75,7 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Domains */}
           <div>

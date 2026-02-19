@@ -12,7 +12,7 @@ import { Footer } from "@/components/oo/footer"
 
 export default function Page() {
   return (
-    <main>
+    <main id="main-content">
       <Navbar />
       <Hero />
       <Philosophy />

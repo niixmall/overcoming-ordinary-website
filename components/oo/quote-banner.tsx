@@ -21,16 +21,16 @@ export function QuoteBanner() {
           </span>
         </div>
 
-        <div className="relative">
+        <blockquote className="relative">
           <p className="font-display text-4xl leading-tight tracking-wider text-foreground sm:text-5xl md:text-6xl">
             {'"'}THERE ARE FEW CONCEPTS,
             <span className="block text-accent">MANY METHODS, AND NO HACKS.{'"'}</span>
           </p>
           <div className="mx-auto mt-8 h-px w-12 bg-border" />
-          <p className="mt-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+          <cite className="mt-6 block text-xs uppercase tracking-[0.3em] text-muted-foreground not-italic">
             The O/o Principle
-          </p>
-        </div>
+          </cite>
+        </blockquote>
       </div>
     </section>
   )

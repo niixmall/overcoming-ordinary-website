@@ -8,6 +8,8 @@ export function Hero() {
         muted
         loop
         playsInline
+        preload="metadata"
+        poster="/images/hero-poster.jpg"
         className="absolute inset-0 h-full w-full object-cover"
       >
         <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Dillon%20BG-67naNHKTr7hVaJIjqKIXFUaSHrVin7.mp4" type="video/mp4" />

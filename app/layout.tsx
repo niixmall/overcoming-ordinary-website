@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description:
     'Performance over Pathology. Dr. Dillon Small has spent over 16 years helping high performers elevate their game in athletics, business, academics, and parenting.',
   metadataBase: new URL('https://overcomingordinary.com'),
+  alternates: {
+    canonical: '/',
+  },
   keywords: [
     'performance psychology',
     'Dr. Dillon Small',
@@ -59,6 +62,41 @@ export const viewport: Viewport = {
   themeColor: '#0a0a0a',
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://overcomingordinary.com/#organization",
+      name: "Overcoming Ordinary",
+      url: "https://overcomingordinary.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://overcomingordinary.com/images/oo-logo.png",
+      },
+      description:
+        "Performance psychology coaching and training by Dr. Dillon Small. Helping high performers dominate average in athletics, business, academics, and parenting.",
+      email: "Business@overcomingordinary.com",
+      founder: {
+        "@type": "Person",
+        name: "Dr. Dillon Small",
+        jobTitle: "Director of Sport Performance Psychology",
+        affiliation: {
+          "@type": "Organization",
+          name: "United States Air Force Academy",
+        },
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://overcomingordinary.com/#website",
+      url: "https://overcomingordinary.com",
+      name: "Overcoming Ordinary",
+      publisher: { "@id": "https://overcomingordinary.com/#organization" },
+    },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -66,9 +104,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
+        <link rel="dns-prefetch" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${_inter.variable} ${_bebasNeue.variable} font-sans antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-accent focus:px-6 focus:py-3 focus:text-sm focus:font-semibold focus:uppercase focus:tracking-wider focus:text-accent-foreground"
+        >
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

@@ -8,27 +8,38 @@ export const metadata: Metadata = {
   title: "Contact Dr. Dillon Small",
   description:
     "Book Dr. Dillon Small for keynote speaking, custom curriculum development, or personalized high-performance coaching. Dominate average.",
+  alternates: {
+    canonical: "https://overcomingordinary.com/contact",
+  },
   openGraph: {
-    title: "Work With Dr. Dillon Small",
+    title: "Work With Dr. Dillon Small | Overcoming Ordinary",
     description:
       "Book Dr. Dillon Small for keynote speaking, custom training, or one-on-one coaching.",
+    url: "https://overcomingordinary.com/contact",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Dr. Dillon Small",
+    description:
+      "Book Dr. Dillon Small for keynote speaking, coaching, or custom training.",
   },
 }
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       {/* Header bar */}
       <header className="border-b border-border">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/oo-logo.png"
-              alt="Overcoming Ordinary"
+              alt="Overcoming Ordinary - Home"
               width={40}
               height={40}
               className="h-8 w-8 invert"
+              priority
             />
           </Link>
           <Link
