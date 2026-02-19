@@ -49,14 +49,18 @@ export function Partners() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-card to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-card to-transparent" />
 
-        {/* Scrolling track: two copies side by side, translates -50% for seamless loop */}
-        <div className="animate-marquee">
-          {partners.map((partner, i) => (
-            <PartnerItem key={`a-${i}`} partner={partner} />
-          ))}
-          {partners.map((partner, i) => (
-            <PartnerItem key={`b-${i}`} partner={partner} />
-          ))}
+        {/* Scrolling track: two identical copies, translateX(-50%) loops seamlessly */}
+        <div className="animate-marquee" aria-hidden="false">
+          <div className="flex shrink-0">
+            {partners.map((partner, i) => (
+              <PartnerItem key={`a-${i}`} partner={partner} />
+            ))}
+          </div>
+          <div className="flex shrink-0" aria-hidden="true">
+            {partners.map((partner, i) => (
+              <PartnerItem key={`b-${i}`} partner={partner} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

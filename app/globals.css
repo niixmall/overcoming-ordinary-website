@@ -11,16 +11,17 @@
 /* Marquee animation -- outside @layer so Tailwind JIT doesn't purge it */
 .animate-marquee {
   display: flex;
-  animation: marquee 8.5s linear infinite;
+  width: max-content;
+  animation: marquee 20s linear infinite;
   will-change: transform;
 }
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
