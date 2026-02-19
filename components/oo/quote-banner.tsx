@@ -23,8 +23,8 @@ export function QuoteBanner() {
 
         <div className="relative">
           <p className="font-display text-4xl leading-tight tracking-wider text-foreground sm:text-5xl md:text-6xl">
-            {'"'}THE ONLY WAY OUT
-            <span className="block text-accent">IS THROUGH.{'"'}</span>
+            {'"'}THERE ARE FEW CONCEPTS,
+            <span className="block text-accent">MANY METHODS, AND NO HACKS.{'"'}</span>
           </p>
           <div className="mx-auto mt-8 h-px w-12 bg-border" />
           <p className="mt-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">
