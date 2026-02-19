@@ -1,10 +1,31 @@
 import Image from "next/image"
+import { Brain, Zap, Shield, Compass } from "lucide-react"
 
-const frameworkItems = [
-  "Mental Toughness Under Pressure",
-  "Sustainable High Performance",
-  "Resilience Through Adversity",
-  "Purpose-Driven Excellence",
+const frameworkPillars = [
+  {
+    icon: Brain,
+    title: "Mental Toughness",
+    description:
+      "Build unshakable focus and cognitive resilience under the highest-pressure environments.",
+  },
+  {
+    icon: Zap,
+    title: "High Performance",
+    description:
+      "Sustain elite output through intentional training, recovery, and disciplined daily habits.",
+  },
+  {
+    icon: Shield,
+    title: "Resilience",
+    description:
+      "Develop the capacity to absorb adversity, adapt quickly, and emerge stronger on the other side.",
+  },
+  {
+    icon: Compass,
+    title: "Purpose-Driven",
+    description:
+      "Cultivate deep purpose and authentic connection that fuels sustained excellence across every domain.",
+  },
 ]
 
 export function Philosophy() {
@@ -41,20 +62,29 @@ export function Philosophy() {
         </div>
 
         {/* The Durable Mindset Framework */}
-        <div className="max-w-2xl">
-          <h3 className="mb-8 font-display text-3xl font-bold tracking-wide text-foreground sm:text-4xl">
-            The Durable Mindset Framework
-          </h3>
-          <ul className="flex flex-col gap-4">
-            {frameworkItems.map((item) => (
-              <li
-                key={item}
-                className="text-lg leading-relaxed text-muted-foreground"
+        <h3 className="mb-10 font-display text-2xl tracking-wider text-accent sm:text-3xl">
+          THE DURABLE MINDSET FRAMEWORK
+        </h3>
+        <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {frameworkPillars.map((pillar) => {
+            const Icon = pillar.icon
+            return (
+              <div
+                key={pillar.title}
+                className="group bg-background p-8 transition-colors hover:bg-card sm:p-10"
               >
-                {item}
-              </li>
-            ))}
-          </ul>
+                <div className="mb-6 flex h-12 w-12 items-center justify-center border border-border transition-colors group-hover:border-accent group-hover:bg-accent/10">
+                  <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-accent" />
+                </div>
+                <h4 className="mb-4 font-display text-lg font-bold uppercase tracking-wider text-foreground">
+                  {pillar.title}
+                </h4>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {pillar.description}
+                </p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
