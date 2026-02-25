@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Bebas_Neue } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import { ConsentProvider } from '@/lib/consent'
 import { CookieBanner } from '@/components/oo/cookie-banner'
 import { GatedScripts } from '@/components/oo/gated-scripts'
@@ -131,6 +132,7 @@ export default function RootLayout({
           <CookieBanner />
           <GatedScripts />
         </ConsentProvider>
+        <Analytics />
       </body>
     </html>
   )
