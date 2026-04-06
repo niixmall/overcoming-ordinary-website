@@ -2,13 +2,13 @@
 
 import Script from "next/script"
 import { useConsent } from "@/lib/consent"
+import { useEffect } from "react"
 
 /**
- * Gated script loader -- only loads third-party tracking scripts
- * AFTER the user has given consent for the relevant category.
+ * Gated script loader -- loads GA with Google Consent Mode v2,
+ * other scripts only AFTER consent.
  *
- * Add your real IDs via env vars. Scripts will NOT load if
- * the env var is missing or the user has not consented.
+ * Add your real IDs via env vars.
  */
 export function GatedScripts() {
   const { consent } = useConsent()
@@ -18,11 +18,37 @@ export function GatedScripts() {
   const linkedInPartnerId = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID
   const hotjarId = process.env.NEXT_PUBLIC_HOTJAR_ID
 
+  // Update Google consent when user preferences change
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.gtag && consent) {
+      window.gtag("consent", "update", {
+        analytics_storage: consent.analytics ? "granted" : "denied",
+        ad_storage: consent.marketing ? "granted" : "denied",
+        ad_user_data: consent.marketing ? "granted" : "denied",
+        ad_personalization: consent.marketing ? "granted" : "denied",
+      })
+    }
+  }, [consent])
+
   return (
     <>
-      {/* ---- Analytics category ---- */}
-      {consent?.analytics && gaId && (
+      {/* ---- Google Analytics with Consent Mode v2 ---- */}
+      {gaId && (
         <>
+          {/* Set default consent to denied before gtag loads */}
+          <Script id="ga-consent-default" strategy="beforeInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'wait_for_update': 500
+              });
+            `}
+          </Script>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
             strategy="afterInteractive"
@@ -32,7 +58,7 @@ export function GatedScripts() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${gaId}', { anonymize_ip: true });
+              gtag('config', '${gaId}');
             `}
           </Script>
         </>
