@@ -85,13 +85,27 @@ export function About() {
               His expertise has been applied to special operators, elite
               athletes, aircrew, and leaders across the Air Force. His research
               spans mindfulness-based practices, embedded mental health care, and
-              building durable mindsets under pressure.
+              building{" "}
+              <a
+                href="/durable-mindset-assessment"
+                className="text-accent underline underline-offset-4 transition-colors hover:text-accent/80"
+              >
+                durable mindsets
+              </a>{" "}
+              under pressure.
             </p>
             <p className="mb-10 text-base leading-relaxed text-muted-foreground">
               His approach rejects the pathology model -- the idea that something
               is wrong with you. Instead, the O/o framework focuses on
               performance: building on your strengths, forging mental toughness,
-              and creating systems for sustained excellence.
+              and creating systems for sustained excellence. Start with a{" "}
+              <a
+                href="/durable-mindset-assessment"
+                className="text-accent underline underline-offset-4 transition-colors hover:text-accent/80"
+              >
+                Durable Mindset Assessment
+              </a>{" "}
+              to see where you stand.
             </p>
 
             {/* Stats */}

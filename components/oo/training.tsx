@@ -37,8 +37,8 @@ export function Training() {
             The Framework
           </p>
           <h2 className="font-display text-5xl tracking-wider text-foreground sm:text-6xl md:text-7xl">
-            THE DURABLE
-            <span className="block text-muted-foreground">MINDSET FRAMEWORK.</span>
+            <a href="/durable-mindset-assessment" className="hover:text-accent transition-colors">THE DURABLE</a>
+            <span className="block text-muted-foreground"><a href="/durable-mindset-assessment" className="hover:text-accent transition-colors">MINDSET FRAMEWORK.</a></span>
           </h2>
           <div className="mt-6 h-px w-16 bg-accent" aria-hidden="true" />
         </div>
