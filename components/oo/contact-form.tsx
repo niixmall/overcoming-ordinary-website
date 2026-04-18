@@ -12,6 +12,7 @@ const intentMap: Record<string, string> = {
   keynote: "Keynote Speaking",
   curriculum: "Custom Curriculum",
   training: "Personalized Training",
+  assessment: "Performance Assessment",
   other: "Other",
 }
 
@@ -33,6 +34,12 @@ const SERVICE_OPTIONS = [
     label: "Personalized Training",
     description:
       "One-on-one or small group high-performance coaching engagements.",
+  },
+  {
+    id: "assessment",
+    label: "Performance Assessment",
+    description:
+      "Evaluate your current mental performance baseline and identify growth opportunities.",
   },
   {
     id: "other",
