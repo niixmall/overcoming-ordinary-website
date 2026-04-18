@@ -1,12 +1,7 @@
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
-const trustBadges = [
-  "US Air Force Academy · Director of Sports Psychology",
-  "Air National Guard · Military Aviator",
-  "The Durable Mindset Framework",
-  "Licensed Clinical Psychologist · PsyD",
-]
+
 
 export function AssessmentHero() {
   return (
@@ -34,7 +29,7 @@ export function AssessmentHero() {
 
         {/* Subheadline */}
         <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Science-based performance assessment for military, tactical, sport, and leadership populations. Built on validated psychology. Delivered by a licensed clinical psychologist and military aviator.
+          Science-based performance assessment for military, tactical, sport, and leadership populations. Built on validated psychology. Delivered by an expert assessment and selection team.
         </p>
 
         {/* CTA Button */}
@@ -46,19 +41,7 @@ export function AssessmentHero() {
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
 
-        {/* Trust Bar */}
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-          {trustBadges.map((badge, index) => (
-            <div key={badge} className="flex items-center gap-4">
-              {index > 0 && (
-                <div className="hidden h-4 w-px bg-border sm:block" aria-hidden="true" />
-              )}
-              <span className="text-xs uppercase tracking-wider text-muted-foreground">
-                {badge}
-              </span>
-            </div>
-          ))}
-        </div>
+
       </div>
     </section>
   )
