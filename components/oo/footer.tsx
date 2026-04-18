@@ -88,11 +88,15 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a href="/durable-mindset-assessment" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    Durable Mindset Assessment
+                  </a>
+                </li>
+                <li>
                   <a href="/playbook" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
                     Free Playbook
                   </a>
                 </li>
-
               </ul>
             </div>
           </div>
